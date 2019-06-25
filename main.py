@@ -10,7 +10,6 @@ storing_folder = r'D:/img/'
 
 image_engine = Baidu(driver, BAIDU_URL, storing_folder)
 
-# image_engine = Factory1024(driver)
 image_engine.retrieve_image()
-# driver.quit()
+
 
