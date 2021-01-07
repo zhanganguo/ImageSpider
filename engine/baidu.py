@@ -4,14 +4,25 @@ import time
 
 
 class Baidu(Engine):
-    def __init__(self, web_driver, start_url, storing_folder):
+    HOME_URL = 'http://image.baidu.com/'
+
+    def __init__(self, web_driver, key, storing_folder):
         Engine.__init__(self, web_driver)
         self.storing_folder = storing_folder
-        self.start_url = start_url
+        self.key = key
 
     def retrieve_image(self):
         Engine.retrieve_image(self)
-        self.web_driver.get(self.start_url)
+        self.web_driver.get(Baidu.HOME_URL)
+        key_input_element = self.web_driver.find_element_by_id('kw')
+        key_input_element.send_keys(self.key)
+        key_input_element.submit()
+        self.web_driver.find_elements_by_css_selector("[class='imgbox']")[0].click()
+
+        # navi_url = self.web_driver.find_elements_by_class_name('main_img img-hover')
+        # self.web_driver.get(navi_url.get_attribute('src'))
+        time.sleep(2)
+        self.web_driver.switch_to.window(self.web_driver.window_handles[-1])
         url = self.web_driver.find_element_by_class_name("currentImg")
         current_index = 0
         while url is not None:
