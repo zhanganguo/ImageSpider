@@ -1,6 +1,7 @@
 from util.util import Util
 from engine.engine import Engine
 import time
+import re
 
 
 class Baidu(Engine):
@@ -27,7 +28,8 @@ class Baidu(Engine):
         current_index = 0
         while url is not None:
             url = url.get_attribute('src')
-            image_format = url.split('.')[-1]
+            # image_format = url.split('.')[-1]
+            image_format = re.findall(r'fmt=.*\?', url)[0][4:-1]
             print('IMAGE URL: ', url)
             image_name = str(current_index) + '.' + image_format
             if Util.download_image(url, self.storing_folder, image_name):
