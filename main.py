@@ -19,8 +19,8 @@ storing_folder = r'E:/img/'
 key = '汽车'
 
 # 选择使用Baidu或者Bing图片引擎
-# image_engine = Baidu(web_driver=driver, key=key, storing_folder=storing_folder)
-image_engine = Bing(web_driver=driver, key=key, storing_folder=storing_folder)
+image_engine = Baidu(web_driver=driver, key=key, storing_folder=storing_folder)
+# image_engine = Bing(web_driver=driver, key=key, storing_folder=storing_folder)
 image_engine.retrieve_image()
 
 
