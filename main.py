@@ -13,11 +13,12 @@ chrome_opt.add_argument('disable-plugins')      # 禁止加载所有插件，可
 driver = webdriver.Chrome(executable_path='driver/chromedriver_87_4280.exe', chrome_options=chrome_opt)
 
 # # 爬取图像的保存位置
-storing_folder = r'E:/img_sink2/'
+storing_folder = r'E:/img/'
 
 # 搜索关键词
 key = '汽车'
 
+# 选择使用Baidu或者Bing图片引擎
 # image_engine = Baidu(web_driver=driver, key=key, storing_folder=storing_folder)
 image_engine = Bing(web_driver=driver, key=key, storing_folder=storing_folder)
 image_engine.retrieve_image()
